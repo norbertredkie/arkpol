@@ -56,9 +56,8 @@ We need to confirm whether:
 - **EU Directive 2006/22/EC** — Enforcement framework for road transport regulations
 
 #### **Polish Implementation:**
-- Polish Ministry of Infrastructure confirmed (May 2026) that own-account transport under Article 3.H is exempt
-- **BUT:** Arkpol is **NOT own-account transport** — we are **commercial transport**
-- **Previous advice was based on incorrect classification**
+- Regulation 561/2006 is implemented in Polish law
+- We need clarification on whether Arkpol's classification as a commercial mover falls under specific requirements or exemptions for 3.5-tonne vehicles
 
 ---
 
@@ -178,9 +177,7 @@ If 7 days is not feasible, please advise on realistic timeline and we can discus
 
 ### **11. ADDITIONAL CONTEXT**
 
-We believe there may have been confusion regarding Arkpol's operational classification in earlier discussions. To be **double sure**, we are seeking Fedemac's independent assessment without relying on assumptions.
-
-Arkpol operates professionally across the EU and wants to ensure **full compliance** with regulations. However, we also want to avoid unnecessary capital investment if exemptions legitimately exist.
+Arkpol operates professionally across the EU and wants to ensure full compliance with all applicable regulations. Given the tight July 2026 deadline and the significant capital investment involved (€15-20k for equipment), we need clear guidance on our specific obligations before proceeding with procurement and installation.
 
 Your guidance will directly inform our compliance and investment strategy.
 
