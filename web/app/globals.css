@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+/* ARKPOL brand tokens — locked in rebrand/BRAND_BOOK.md */
+:root {
+  --navy: #0d1b2a;
+  --steel: #1b4f72;
+  --gold: #c9a84c;
+  --gold-bright: #dcc16f;
+  --bone: #f8f6f1;
+  --bone-dim: #c8cdd4;
+  --ink: #0d1b2a;
+  --line: #1f2d3d;
+  --line-light: #e6e2d8;
+}
+
+@theme inline {
+  --color-navy: var(--navy);
+  --color-steel: var(--steel);
+  --color-gold: var(--gold);
+  --color-gold-bright: var(--gold-bright);
+  --color-bone: var(--bone);
+  --color-bone-dim: var(--bone-dim);
+  --color-ink: var(--ink);
+  --color-line: var(--line);
+  --color-line-light: var(--line-light);
+
+  --font-display: var(--font-playfair);
+  --font-sans: var(--font-inter);
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bone);
+  color: var(--ink);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+h1, h2, h3, .font-display {
+  font-family: var(--font-playfair), Georgia, serif;
+  letter-spacing: -0.015em;
+}
+
+/* Gold ambient glow on navy sections (top-right + bottom-left only) */
+.amb {
+  position: relative;
+  isolation: isolate;
+}
+.amb::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(60% 50% at 85% 12%, rgba(201, 168, 76, 0.1), transparent 70%),
+    radial-gradient(55% 45% at 8% 92%, rgba(201, 168, 76, 0.07), transparent 70%);
+}
+
+/* Living gold fill for headline accent word */
+@keyframes goldflow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+.flow-text {
+  background: linear-gradient(100deg, #c9a84c 0%, #f4e3a8 25%, #c9a84c 50%, #dcc16f 75%, #c9a84c 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: goldflow 7s linear infinite;
+}
+
+/* Kinetic destination marquee — the hero signature moment */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  display: inline-flex;
+  width: max-content;
+  animation: marquee 42s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .flow-text { animation: none; }
+  .marquee-track { animation: none; }
+}
+
+/* Fine gold underline that draws in on reveal */
+.underline-draw {
+  background-image: linear-gradient(var(--gold), var(--gold));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: var(--draw, 0%) 2px;
+  transition: background-size 0.9s cubic-bezier(0.16, 0.84, 0.44, 1);
+  padding-bottom: 0.08em;
+}
+
+/* Reveal-on-scroll utility (progressive enhancement; visible by default if no JS) */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 0.84, 0.44, 1),
+    transform 0.7s cubic-bezier(0.16, 0.84, 0.44, 1);
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
