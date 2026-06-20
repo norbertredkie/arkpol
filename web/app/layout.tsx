@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
+import { LocaleProvider } from "./i18n";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -18,9 +19,9 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://arkpol.com"),
-  title: "Arkpol Group — Europe's Trusted Corporate Relocation Partner",
+  title: "Arkpol Group — International & Corporate Relocations | Move With Certainty",
   description:
-    "Move with certainty. Own crews across Europe, trusted by NATO, 30 years of international moving and corporate relocations. IAM & FEDEMAC certified. Warehouses in Poland and Germany, worldwide reach.",
+    "International moving and corporate relocations done right. Our own crews across Central Europe, an IAMTrusted, FIDI-accredited network worldwide, and 30 years of getting it there intact and on time. Warehouses in Poland and Germany.",
   keywords: [
     "international moving company",
     "corporate relocation Europe",
@@ -33,7 +34,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Arkpol Group — Move With Certainty",
     description:
-      "Own crews across Europe. Trusted by NATO. 30 years. Worldwide reach.",
+      "Our own crews across Central Europe. IAMTrusted, FIDI-accredited worldwide. 30 years of moves that simply had to arrive.",
     url: "https://arkpol.com",
     siteName: "Arkpol Group",
     locale: "en_GB",
@@ -70,7 +71,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
         />
-        {children}
+        <LocaleProvider>{children}</LocaleProvider>
       </body>
     </html>
   );

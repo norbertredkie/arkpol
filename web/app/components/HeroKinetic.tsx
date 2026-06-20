@@ -37,7 +37,7 @@ export default function HeroKinetic() {
         <path
           d="M-50 560 C 300 540, 520 320, 820 300 S 1300 180, 1520 120"
           fill="none"
-          stroke="#c9a84c"
+          stroke="#be1e2d"
           strokeWidth="1.5"
           strokeDasharray="2 10"
           strokeLinecap="round"
@@ -48,7 +48,7 @@ export default function HeroKinetic() {
       <div className="relative z-10 mx-auto flex w-full max-w-[1200px] flex-1 flex-col justify-center px-6 pt-28">
         <Reveal>
           <p className="mb-7 text-xs font-medium uppercase tracking-[0.3em] text-gold">
-            Est. 1995 · IAM Member · FIDI-Accredited Partners
+            Est. 1995 · IAMTrusted Moving Company · FIDI-Accredited Network
           </p>
         </Reveal>
         <Reveal delay={100}>
@@ -60,16 +60,16 @@ export default function HeroKinetic() {
         </Reveal>
         <Reveal delay={200}>
           <p className="mt-8 max-w-xl text-lg text-bone/80 md:text-xl">
-            International relocations, handled by people who own the outcome. Own crews
-            across Central Europe, an accredited network worldwide, and 30 years of moves
-            that simply had to arrive.
+            International moves, run by the people accountable for them. Our own crews
+            across Central Europe, an accredited network worldwide, and thirty years of
+            getting it there — intact, on time, without the drama.
           </p>
         </Reveal>
         <Reveal delay={300}>
           <div className="mt-11 flex flex-wrap items-center gap-4">
             <a
               href="#quote"
-              className="rounded-[2px] bg-gold px-8 py-4 text-sm font-semibold uppercase tracking-wider text-navy transition-colors hover:bg-gold-bright"
+              className="rounded-[2px] bg-gold px-8 py-4 text-sm font-semibold uppercase tracking-wider text-bone transition-colors hover:bg-gold-bright"
             >
               Request a Quote →
             </a>

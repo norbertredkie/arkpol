@@ -2,15 +2,15 @@
 
 /* ARKPOL brand tokens — locked in rebrand/BRAND_BOOK.md */
 :root {
-  --navy: #0d1b2a;
-  --steel: #1b4f72;
-  --gold: #c9a84c;
-  --gold-bright: #dcc16f;
-  --bone: #f8f6f1;
-  --bone-dim: #c8cdd4;
-  --ink: #0d1b2a;
-  --line: #1f2d3d;
-  --line-light: #e6e2d8;
+  --navy: #1b1c20;
+  --steel: #6d6e71;
+  --gold: #be1e2d;
+  --gold-bright: #d62a39;
+  --bone: #f6f6f4;
+  --bone-dim: #c4c6c9;
+  --ink: #202124;
+  --line: #2c2d32;
+  --line-light: #e4e3df;
 }
 
 @theme inline {
@@ -61,8 +61,8 @@ h1, h2, h3, .font-display {
   z-index: -1;
   pointer-events: none;
   background:
-    radial-gradient(60% 50% at 85% 12%, rgba(201, 168, 76, 0.1), transparent 70%),
-    radial-gradient(55% 45% at 8% 92%, rgba(201, 168, 76, 0.07), transparent 70%);
+    radial-gradient(60% 50% at 85% 12%, rgba(190,30,45, 0.1), transparent 70%),
+    radial-gradient(55% 45% at 8% 92%, rgba(190,30,45, 0.07), transparent 70%);
 }
 
 /* Living gold fill for headline accent word */
@@ -71,7 +71,7 @@ h1, h2, h3, .font-display {
   100% { background-position: 200% 50%; }
 }
 .flow-text {
-  background: linear-gradient(100deg, #c9a84c 0%, #f4e3a8 25%, #c9a84c 50%, #dcc16f 75%, #c9a84c 100%);
+  background: linear-gradient(100deg, #be1e2d 0%, #e8727c 25%, #be1e2d 50%, #d62a39 75%, #be1e2d 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
@@ -104,7 +104,36 @@ h1, h2, h3, .font-display {
   padding-bottom: 0.08em;
 }
 
+/* Map location pings (frozen-safe: base keyframe is a visible faint ring) */
+@keyframes mapPing {
+  0% { transform: scale(0.55); opacity: 0.7; }
+  70%, 100% { transform: scale(1.9); opacity: 0; }
+}
+.map-ping {
+  animation: mapPing 2.8s ease-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .map-ping { animation: none; opacity: 0.4; }
+}
+
+/* Hero entrance — self-starting on mount (NOT scroll-gated; hero is above the
+   fold and must never depend on an IntersectionObserver that can lose the race
+   with the WebGL canvas mount). */
+@keyframes heroRise {
+  from { transform: translateY(20px); }
+  to { transform: translateY(0); }
+}
+/* Transform-only entrance — content is ALWAYS at full opacity, so a throttled
+   (offscreen) document timeline can never strand it invisible. Pure enhancement. */
+.hero-rise {
+  animation: heroRise 0.85s cubic-bezier(0.16, 0.84, 0.44, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-rise { animation: none; opacity: 1; }
+}
+
 /* Reveal-on-scroll utility (progressive enhancement; visible by default if no JS) */
+/* v5 */
 .reveal {
   opacity: 0;
   transform: translateY(24px);

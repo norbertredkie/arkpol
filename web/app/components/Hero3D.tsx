@@ -22,7 +22,7 @@ export default function Hero3D() {
         className="pointer-events-none absolute inset-0 z-0"
         style={{
           background:
-            "radial-gradient(60% 60% at 78% 30%, rgba(201,168,76,0.14), transparent 70%), radial-gradient(50% 50% at 12% 88%, rgba(201,168,76,0.07), transparent 70%)",
+            "radial-gradient(60% 60% at 78% 30%, rgba(190,30,45,0.14), transparent 70%), radial-gradient(50% 50% at 12% 88%, rgba(190,30,45,0.07), transparent 70%)",
         }}
       />
 
@@ -55,7 +55,7 @@ export default function Hero3D() {
         <div className="mt-10 flex flex-wrap items-center gap-4">
           <a
             href="#quote"
-            className="rounded-[2px] bg-gold px-7 py-3.5 text-sm font-semibold uppercase tracking-wider text-navy transition-colors hover:bg-gold-bright"
+            className="rounded-[2px] bg-gold px-7 py-3.5 text-sm font-semibold uppercase tracking-wider text-bone transition-colors hover:bg-gold-bright"
           >
             Request a Quote →
           </a>

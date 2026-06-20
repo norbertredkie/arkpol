@@ -1,33 +1,20 @@
-import Reveal from "./Reveal";
+"use client";
 
-const REASONS = [
-  {
-    n: "01",
-    title: "Precision-Grade Logistics",
-    body: "Three decades moving high-value, time-critical and sensitive cargo across borders — every relocation planned, documented and executed to an exacting standard. The complex move is our default setting.",
-  },
-  {
-    n: "02",
-    title: "Our Own Crews Where It Counts",
-    body: "Across Central and Eastern Europe — our home ground — your move is handled end-to-end by Arkpol's own teams, dispatched from our warehouses in Poland and Germany. One crew, one standard, no handoff surprises.",
-  },
-  {
-    n: "03",
-    title: "Accredited Reach, Worldwide",
-    body: "Wherever you're headed, you're covered by a vetted international network. As an IAM member working hand-in-hand with FIDI-accredited partners, every leg of your move is held to the same accredited standard — across Europe and beyond.",
-  },
-];
+import Reveal from "./Reveal";
+import { useT } from "../i18n";
 
 export default function ValueProps() {
+  const t = useT();
+  const REASONS = t.why.reasons.map((r, i) => ({ n: `0${i + 1}`, ...r }));
   return (
     <section id="why" className="amb bg-navy py-28 text-bone md:py-40">
       <div className="mx-auto max-w-[1200px] px-6">
         <Reveal>
           <p className="mb-6 text-xs font-medium uppercase tracking-[0.28em] text-gold">
-            Why Arkpol
+            {t.why.eyebrow}
           </p>
           <h2 className="max-w-3xl font-display text-[clamp(2.2rem,5vw,3.75rem)] font-bold leading-[1.04]">
-            Not a mover. A logistics standard.
+            {t.why.heading}
           </h2>
         </Reveal>
 

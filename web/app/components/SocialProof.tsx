@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Reveal from "./Reveal";
+import { useT } from "../i18n";
 
 function useCountUp(target: number, duration = 1600, active = false) {
   const [value, setValue] = useState(0);
@@ -49,6 +50,7 @@ function Stat({
 }
 
 export default function SocialProof() {
+  const t = useT();
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
@@ -68,7 +70,15 @@ export default function SocialProof() {
     return () => io.disconnect();
   }, []);
 
-  const memberships = ["IAM", "FEDEMAC", "IMA", "IAMX"];
+  // The white+gold IAMTrusted seal is featured on the dark (its intended look);
+  // the four association logos share one soft light bar so their colour marks read
+  // without scattering white chips across the dark section.
+  const barLogos = [
+    { src: "/partners/iam.svg", alt: "IAM — International Association of Movers", h: "h-7 md:h-9" },
+    { src: "/partners/iamx.png", alt: "IAMX Validated — IAM Mobility Exchange", h: "h-6 md:h-7" },
+    { src: "/partners/eura.svg", alt: "EURA — European Relocation Association (Full Member)", h: "h-6 md:h-7" },
+    { src: "/partners/fedemac.svg", alt: "FEDEMAC — Federation of European Movers Associations (Direct Affiliate)", h: "h-7 md:h-9", href: "https://fedemac.com/member/arkpol-moving-relocations/" },
+  ];
 
   return (
     <section id="numbers" className="bg-navy py-20 text-bone md:py-24">
@@ -77,24 +87,46 @@ export default function SocialProof() {
           ref={ref}
           className="grid grid-cols-2 gap-10 border-y border-line py-14 md:grid-cols-4 md:gap-6"
         >
-          <Stat prefix="+" value={5000} label="Moves per year" active={visible} />
-          <Stat value={30} label="Years" active={visible} />
-          <Stat value={50} suffix="+" label="Countries" active={visible} />
-          <Stat value={4} label="Memberships" active={visible} />
+          <Stat prefix="+" value={5000} label={t.numbers.moves} active={visible} />
+          <Stat value={30} label={t.numbers.years} active={visible} />
+          <Stat value={50} suffix="+" label={t.numbers.countries} active={visible} />
+          <Stat value={5} label={t.numbers.memberships} active={visible} />
         </div>
 
-        <Reveal className="mt-12 flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
-          <span className="text-[11px] uppercase tracking-[0.24em] text-bone-dim/60">
-            Member of
+        <Reveal className="mt-14 flex flex-col items-center gap-8">
+          <span className="text-[11px] uppercase tracking-[0.28em] text-bone-dim/55">
+            {t.numbers.memberOf}
           </span>
-          {memberships.map((m) => (
-            <span
-              key={m}
-              className="text-sm font-semibold uppercase tracking-[0.18em] text-bone-dim/80"
-            >
-              {m}
-            </span>
-          ))}
+
+          {/* Featured certification: IAMTrusted seal (white+gold, on dark) */}
+          <img
+            src="/partners/iam-trusted.png"
+            alt="IAM Trusted Moving Company"
+            className="h-16 w-auto md:h-20"
+            loading="lazy"
+          />
+
+          {/* Association memberships — one soft light bar, logos in full colour */}
+          <div className="flex flex-wrap items-stretch justify-center divide-x divide-line-light overflow-hidden rounded-xl bg-bone shadow-[0_10px_40px_-12px_rgba(0,0,0,0.5)]">
+            {barLogos.map((p) => {
+              const cell = (
+                <span className="flex items-center justify-center px-7 py-5 transition-opacity duration-300 hover:opacity-70 md:px-9">
+                  <img src={p.src} alt={p.alt} className={`${p.h} w-auto`} loading="lazy" />
+                </span>
+              );
+              return p.href ? (
+                <a key={p.src} href={p.href} target="_blank" rel="noopener noreferrer" aria-label={p.alt} className="flex">
+                  {cell}
+                </a>
+              ) : (
+                <span key={p.src} className="flex">{cell}</span>
+              );
+            })}
+          </div>
+
+          <p className="text-center text-[11px] tracking-[0.12em] text-bone-dim/55">
+            {t.numbers.credential}
+          </p>
         </Reveal>
       </div>
     </section>

@@ -2,12 +2,13 @@
 
 import { useState } from "react";
 import Reveal from "./Reveal";
+import { useT } from "../i18n";
 
 /* ─── Service tile data ─────────────────────────────────────────────────── */
 const services = [
   {
     title: "International Moving (Europe)",
-    description: "Door-to-door across the EU with our own crews.",
+    description: "Door-to-door across the EU, handled end-to-end by one of our own crews — packed, moved, delivered.",
     icon: (
       <svg
         width="36"
@@ -18,21 +19,21 @@ const services = [
         aria-hidden="true"
       >
         {/* Truck outline */}
-        <rect x="2" y="12" width="22" height="14" rx="1" stroke="#c9a84c" strokeWidth="1.5" />
-        <path d="M24 17h6l4 5v4h-10V17Z" stroke="#c9a84c" strokeWidth="1.5" strokeLinejoin="round" />
+        <rect x="2" y="12" width="22" height="14" rx="1" stroke="#be1e2d" strokeWidth="1.5" />
+        <path d="M24 17h6l4 5v4h-10V17Z" stroke="#be1e2d" strokeWidth="1.5" strokeLinejoin="round" />
         {/* Wheels */}
-        <circle cx="9" cy="27" r="3" stroke="#c9a84c" strokeWidth="1.5" />
-        <circle cx="28" cy="27" r="3" stroke="#c9a84c" strokeWidth="1.5" />
+        <circle cx="9" cy="27" r="3" stroke="#be1e2d" strokeWidth="1.5" />
+        <circle cx="28" cy="27" r="3" stroke="#be1e2d" strokeWidth="1.5" />
         {/* EU stars motif — 3 small dots above cab */}
-        <circle cx="7" cy="9" r="1" fill="#c9a84c" fillOpacity="0.6" />
-        <circle cx="11" cy="7" r="1" fill="#c9a84c" fillOpacity="0.6" />
-        <circle cx="15" cy="9" r="1" fill="#c9a84c" fillOpacity="0.6" />
+        <circle cx="7" cy="9" r="1" fill="#be1e2d" fillOpacity="0.6" />
+        <circle cx="11" cy="7" r="1" fill="#be1e2d" fillOpacity="0.6" />
+        <circle cx="15" cy="9" r="1" fill="#be1e2d" fillOpacity="0.6" />
       </svg>
     ),
   },
   {
     title: "Overseas Shipping (Sea + Air)",
-    description: "Containerised sea freight and time-critical air moves worldwide.",
+    description: "Sea and air freight worldwide, with customs and paperwork handled so nothing stalls at the border.",
     icon: (
       <svg
         width="36"
@@ -43,23 +44,23 @@ const services = [
         aria-hidden="true"
       >
         {/* Ship hull */}
-        <path d="M4 22 L6 28 L30 28 L32 22 Z" stroke="#c9a84c" strokeWidth="1.5" strokeLinejoin="round" />
+        <path d="M4 22 L6 28 L30 28 L32 22 Z" stroke="#be1e2d" strokeWidth="1.5" strokeLinejoin="round" />
         {/* Container stack on deck */}
-        <rect x="10" y="16" width="7" height="6" rx="0.5" stroke="#c9a84c" strokeWidth="1.25" />
-        <rect x="19" y="16" width="7" height="6" rx="0.5" stroke="#c9a84c" strokeWidth="1.25" />
+        <rect x="10" y="16" width="7" height="6" rx="0.5" stroke="#be1e2d" strokeWidth="1.25" />
+        <rect x="19" y="16" width="7" height="6" rx="0.5" stroke="#be1e2d" strokeWidth="1.25" />
         {/* Mast */}
-        <line x1="18" y1="8" x2="18" y2="16" stroke="#c9a84c" strokeWidth="1.5" />
-        <line x1="12" y1="11" x2="24" y2="11" stroke="#c9a84c" strokeWidth="1.25" />
+        <line x1="18" y1="8" x2="18" y2="16" stroke="#be1e2d" strokeWidth="1.5" />
+        <line x1="12" y1="11" x2="24" y2="11" stroke="#be1e2d" strokeWidth="1.25" />
         {/* Waves */}
-        <path d="M2 31 Q6 29 10 31 Q14 33 18 31 Q22 29 26 31 Q30 33 34 31" stroke="#c9a84c" strokeWidth="1.25" strokeOpacity="0.5" />
+        <path d="M2 31 Q6 29 10 31 Q14 33 18 31 Q22 29 26 31 Q30 33 34 31" stroke="#be1e2d" strokeWidth="1.25" strokeOpacity="0.5" />
         {/* Plane silhouette top-right */}
-        <path d="M26 5 L34 9 L28 10 L26 14 L24 10 L20 10 Z" stroke="#c9a84c" strokeWidth="1.1" strokeLinejoin="round" />
+        <path d="M26 5 L34 9 L28 10 L26 14 L24 10 L20 10 Z" stroke="#be1e2d" strokeWidth="1.1" strokeLinejoin="round" />
       </svg>
     ),
   },
   {
     title: "Corporate & Office Relocations",
-    description: "Whole offices and staff mobility, planned to the hour.",
+    description: "Whole offices and staff moves planned to the hour, so business never skips a beat.",
     icon: (
       <svg
         width="36"
@@ -70,26 +71,26 @@ const services = [
         aria-hidden="true"
       >
         {/* Building */}
-        <rect x="4" y="10" width="16" height="22" rx="0.5" stroke="#c9a84c" strokeWidth="1.5" />
+        <rect x="4" y="10" width="16" height="22" rx="0.5" stroke="#be1e2d" strokeWidth="1.5" />
         {/* Windows */}
-        <rect x="7" y="14" width="4" height="3" rx="0.25" stroke="#c9a84c" strokeWidth="1.1" />
-        <rect x="13" y="14" width="4" height="3" rx="0.25" stroke="#c9a84c" strokeWidth="1.1" />
-        <rect x="7" y="20" width="4" height="3" rx="0.25" stroke="#c9a84c" strokeWidth="1.1" />
-        <rect x="13" y="20" width="4" height="3" rx="0.25" stroke="#c9a84c" strokeWidth="1.1" />
+        <rect x="7" y="14" width="4" height="3" rx="0.25" stroke="#be1e2d" strokeWidth="1.1" />
+        <rect x="13" y="14" width="4" height="3" rx="0.25" stroke="#be1e2d" strokeWidth="1.1" />
+        <rect x="7" y="20" width="4" height="3" rx="0.25" stroke="#be1e2d" strokeWidth="1.1" />
+        <rect x="13" y="20" width="4" height="3" rx="0.25" stroke="#be1e2d" strokeWidth="1.1" />
         {/* Door */}
-        <rect x="9" y="26" width="6" height="6" rx="0.25" stroke="#c9a84c" strokeWidth="1.25" />
+        <rect x="9" y="26" width="6" height="6" rx="0.25" stroke="#be1e2d" strokeWidth="1.25" />
         {/* Arrow pointing right */}
-        <path d="M22 18 L32 18" stroke="#c9a84c" strokeWidth="1.5" strokeLinecap="round" />
-        <path d="M28 14 L33 18 L28 22" stroke="#c9a84c" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M22 18 L32 18" stroke="#be1e2d" strokeWidth="1.5" strokeLinecap="round" />
+        <path d="M28 14 L33 18 L28 22" stroke="#be1e2d" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         {/* Clock motif */}
-        <circle cx="30" cy="9" r="4" stroke="#c9a84c" strokeWidth="1.25" />
-        <path d="M30 7 L30 9 L32 10" stroke="#c9a84c" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="30" cy="9" r="4" stroke="#be1e2d" strokeWidth="1.25" />
+        <path d="M30 7 L30 9 L32 10" stroke="#be1e2d" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
   },
   {
     title: "Warehousing & Storage",
-    description: "Secure short- and long-term storage in PL & DE warehouses.",
+    description: "Secure, insured storage in our own Polish and German warehouses — for a week or a year.",
     icon: (
       <svg
         width="36"
@@ -100,21 +101,21 @@ const services = [
         aria-hidden="true"
       >
         {/* Warehouse roof */}
-        <path d="M2 16 L18 6 L34 16" stroke="#c9a84c" strokeWidth="1.5" strokeLinejoin="round" />
+        <path d="M2 16 L18 6 L34 16" stroke="#be1e2d" strokeWidth="1.5" strokeLinejoin="round" />
         {/* Warehouse walls */}
-        <rect x="4" y="16" width="28" height="16" rx="0.5" stroke="#c9a84c" strokeWidth="1.5" />
+        <rect x="4" y="16" width="28" height="16" rx="0.5" stroke="#be1e2d" strokeWidth="1.5" />
         {/* Roller door */}
-        <rect x="13" y="22" width="10" height="10" rx="0.25" stroke="#c9a84c" strokeWidth="1.25" />
-        <line x1="13" y1="25" x2="23" y2="25" stroke="#c9a84c" strokeWidth="0.75" strokeOpacity="0.6" />
-        <line x1="13" y1="28" x2="23" y2="28" stroke="#c9a84c" strokeWidth="0.75" strokeOpacity="0.6" />
+        <rect x="13" y="22" width="10" height="10" rx="0.25" stroke="#be1e2d" strokeWidth="1.25" />
+        <line x1="13" y1="25" x2="23" y2="25" stroke="#be1e2d" strokeWidth="0.75" strokeOpacity="0.6" />
+        <line x1="13" y1="28" x2="23" y2="28" stroke="#be1e2d" strokeWidth="0.75" strokeOpacity="0.6" />
         {/* Shelving racks */}
-        <line x1="8" y1="18" x2="8" y2="30" stroke="#c9a84c" strokeWidth="1.1" />
-        <line x1="6" y1="22" x2="11" y2="22" stroke="#c9a84c" strokeWidth="1.1" />
-        <line x1="6" y1="26" x2="11" y2="26" stroke="#c9a84c" strokeWidth="1.1" />
+        <line x1="8" y1="18" x2="8" y2="30" stroke="#be1e2d" strokeWidth="1.1" />
+        <line x1="6" y1="22" x2="11" y2="22" stroke="#be1e2d" strokeWidth="1.1" />
+        <line x1="6" y1="26" x2="11" y2="26" stroke="#be1e2d" strokeWidth="1.1" />
         {/* Lock icon */}
-        <rect x="26" y="20" width="6" height="5" rx="0.5" stroke="#c9a84c" strokeWidth="1.1" />
-        <path d="M27.5 20 Q27.5 17 29 17 Q30.5 17 30.5 20" stroke="#c9a84c" strokeWidth="1.1" />
-        <circle cx="29" cy="23" r="0.75" fill="#c9a84c" />
+        <rect x="26" y="20" width="6" height="5" rx="0.5" stroke="#be1e2d" strokeWidth="1.1" />
+        <path d="M27.5 20 Q27.5 17 29 17 Q30.5 17 30.5 20" stroke="#be1e2d" strokeWidth="1.1" />
+        <circle cx="29" cy="23" r="0.75" fill="#be1e2d" />
       </svg>
     ),
   },
@@ -173,6 +174,7 @@ const fields: {
 
 /* ─── Component ─────────────────────────────────────────────────────────── */
 export default function Services() {
+  const t = useT();
   const [submitted, setSubmitted] = useState(false);
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -187,7 +189,7 @@ export default function Services() {
         {/* ── Section header ── */}
         <Reveal>
           <p className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-gold">
-            WHAT WE DO
+            {t.services.eyebrow}
           </p>
         </Reveal>
         <Reveal delay={80}>
@@ -195,7 +197,7 @@ export default function Services() {
             className="font-display text-ink mb-16 max-w-xl leading-tight tracking-tight"
             style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
           >
-            Four services. One accountable team.
+            {t.services.heading}
           </h2>
         </Reveal>
 
@@ -205,7 +207,7 @@ export default function Services() {
           {/* ── LEFT: 2×2 service tiles ── */}
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             {services.map((svc, i) => (
-              <Reveal key={svc.title} delay={i * 80}>
+              <Reveal key={i} delay={i * 80}>
                 <article
                   className="
                     group relative flex h-full flex-col gap-4 border border-line-light bg-white
@@ -229,10 +231,10 @@ export default function Services() {
                       className="font-display text-ink mb-2 font-semibold leading-snug"
                       style={{ fontSize: "1.15rem" }}
                     >
-                      {svc.title}
+                      {t.services.tiles[i].title}
                     </h3>
                     <p className="text-sm leading-relaxed text-[#4a5568]">
-                      {svc.description}
+                      {t.services.tiles[i].description}
                     </p>
                   </div>
                 </article>
@@ -260,10 +262,10 @@ export default function Services() {
                     className="mb-6"
                     aria-hidden="true"
                   >
-                    <circle cx="26" cy="26" r="25" stroke="#c9a84c" strokeWidth="1.5" strokeOpacity="0.4" />
+                    <circle cx="26" cy="26" r="25" stroke="#be1e2d" strokeWidth="1.5" strokeOpacity="0.4" />
                     <path
                       d="M15 27 L22 34 L37 19"
-                      stroke="#c9a84c"
+                      stroke="#be1e2d"
                       strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -273,17 +275,17 @@ export default function Services() {
                     className="font-display mb-4 font-semibold text-bone leading-tight"
                     style={{ fontSize: "1.5rem" }}
                   >
-                    You&rsquo;re on our radar.
+                    {t.services.form.successHeading}
                   </h3>
-                  <p className="text-sm leading-relaxed text-[#c8cdd4]">
-                    Thanks — we&rsquo;ll be in touch within one business day at{" "}
+                  <p className="text-sm leading-relaxed text-[#c4c6c9]">
+                    {t.services.form.successPre}
                     <a
                       href="mailto:arkpol@arkpol.com"
                       className="text-gold underline underline-offset-2 hover:text-gold-bright"
                     >
                       arkpol@arkpol.com
                     </a>
-                    .
+                    {t.services.form.successPost}
                   </p>
                 </div>
               ) : (
@@ -294,21 +296,21 @@ export default function Services() {
                       className="font-display mb-2 font-semibold text-bone leading-tight"
                       style={{ fontSize: "1.6rem" }}
                     >
-                      Get your quote
+                      {t.services.form.heading}
                     </h3>
-                    <p className="text-sm leading-relaxed text-[#c8cdd4]">
-                      Tell us where you&rsquo;re going. We reply within one business day.
+                    <p className="text-sm leading-relaxed text-[#c4c6c9]">
+                      {t.services.form.sub}
                     </p>
                   </div>
 
                   <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-5">
-                    {fields.map((f) => (
+                    {fields.map((f, i) => (
                       <div key={f.id} className="flex flex-col gap-1.5">
                         <label
                           htmlFor={f.id}
-                          className="text-xs font-semibold uppercase tracking-widest text-[#c8cdd4]"
+                          className="text-xs font-semibold uppercase tracking-widest text-[#c4c6c9]"
                         >
-                          {f.label}
+                          {t.services.form.labels[i]}
                           {f.required && (
                             <span className="ml-1 text-gold" aria-hidden="true">
                               *
@@ -319,11 +321,11 @@ export default function Services() {
                           id={f.id}
                           name={f.id}
                           type={f.type}
-                          placeholder={f.placeholder || undefined}
+                          placeholder={t.services.form.placeholders[i] || undefined}
                           required={f.required}
                           autoComplete={f.autoComplete}
                           className="
-                            w-full border border-[#1f2d3d] bg-[#07111c] px-4 py-3
+                            w-full border border-[#34353a] bg-[#141517] px-4 py-3
                             text-sm text-bone placeholder:text-[#4a5a6a]
                             outline-none ring-0 transition-colors duration-200
                             focus:border-gold/60 focus:ring-1 focus:ring-gold/30
@@ -335,19 +337,19 @@ export default function Services() {
 
                     {/* Required note */}
                     <p className="text-[11px] text-[#4a5a6a]">
-                      <span className="text-gold">*</span> Required fields
+                      <span className="text-gold">*</span> {t.services.form.requiredNote}
                     </p>
 
                     <button
                       type="submit"
                       className="
                         mt-1 w-full bg-gold px-8 py-4 text-sm font-semibold uppercase
-                        tracking-widest text-navy transition-colors duration-200
-                        hover:bg-[#dcc16f] focus-visible:outline focus-visible:outline-2
+                        tracking-widest text-bone transition-colors duration-200
+                        hover:bg-[#d62a39] focus-visible:outline focus-visible:outline-2
                         focus-visible:outline-offset-2 focus-visible:outline-gold
                       "
                     >
-                      Get My Quote
+                      {t.services.form.submit}
                     </button>
                   </form>
                 </>

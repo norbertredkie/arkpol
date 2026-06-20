@@ -1,5 +1,5 @@
 import Nav from "./components/Nav";
-import HeroKinetic from "./components/HeroKinetic";
+import HeroFilm from "./components/HeroFilm";
 import Statement from "./components/Statement";
 import ValueProps from "./components/ValueProps";
 import EntityMap from "./components/EntityMap";
@@ -14,7 +14,7 @@ export default function Home() {
     <>
       <Nav />
       <main className="flex-1">
-        <HeroKinetic />
+        <HeroFilm />
         <Statement />
         <ValueProps />
         <EntityMap />

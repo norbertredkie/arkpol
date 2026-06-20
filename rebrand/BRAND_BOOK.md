@@ -15,19 +15,27 @@ Wrong hex or wrong font = bounce back. (Same compliance rule as the rest of PBS.
 
 ---
 
-## 2. Color tokens (LOCKED)
+## 2. Color tokens (LOCKED — grey + red, from the real logo, 2026-06-18)
 
-| Token | Hex | Use |
+Palette pivoted from navy/gold → **the logo's own brand colours** (charcoal grey + red).
+⚠️ Token NAMES are legacy (`--navy`, `--gold`) but now hold grey/red VALUES — don't be
+fooled by the names. Mapping below is the source of truth.
+
+| Token (legacy name) | Hex | Use |
 |---|---|---|
-| `--navy` | `#0D1B2A` | Primary. Dark sections, hero bg, footer. |
-| `--steel` | `#1B4F72` | Secondary. Accents, borders, hover states. |
-| `--gold` | `#C9A84C` | Accent. Primary CTAs, stat highlights, mark. Use sparingly. |
-| `--bone` | `#F8F6F1` | Off-white. Light section background. |
-| `--ink` | `#0D1B2A` | Body text on light. |
-| `--bone-dim` | `#C8CDD4` | Muted text on navy. |
-| `--line` | `#1F2D3D` | Hairline dividers on dark. |
+| `--navy` | `#202124` | Dark base. Hero, dark sections, footer, quote card. (charcoal) |
+| `--steel` | `#6D6E71` | Secondary grey — borders, depth, map land. (logo wordmark grey) |
+| `--gold` | `#BE1E2D` | **Brand red.** Primary CTAs, accents, "Certainty.", stat highlights. |
+| `--gold-bright` | `#D62A39` | Brighter red — hovers, big stat numbers. |
+| `--bone` | `#F5F5F6` | Cool off-white. Light section background. |
+| `--ink` | `#202124` | Body text on light. |
+| `--bone-dim` | `#C4C6C9` | Muted text on charcoal. |
+| `--line` | `#34353A` | Hairline dividers on dark. |
+| `--line-light` | `#E2E2E4` | Hairline dividers on light. |
 
-Contrast: navy/gold and navy/bone both pass WCAG AA (4.5:1). Never gold text on bone (fails).
+**Exact logo brand hexes:** red `#BE1E2D` · dark grey `#6D6E71` · light grey `#D1D3D4`.
+Contrast: red CTAs MUST use bone/white text (`text-bone`), never charcoal. Red text on
+charcoal is OK for accents/eyebrows only.
 
 ## 3. Typography (LOCKED)
 
@@ -43,10 +51,15 @@ Contrast: navy/gold and navy/bone both pass WCAG AA (4.5:1). Never gold text on 
 - No stock "movers with boxes" photography. Real cities, trucks, teams, freight, European landmarks.
 - Sticky nav, click-to-call on mobile.
 
-## 5. Logo
+## 5. Logo (REAL — supplied 2026-06-18)
 
-- Refined geometric mark: arrow / path motif (= movement + direction) + ARKPOL wordmark.
-- Existing reference: `arkpol group logo` (iCloud Desktop). New mark TBD in identity phase.
+- **The official Arkpol logo** (Illustrator 2012): a mark of light-grey bar + red bar + dark-grey
+  square, over the **ARKPOL** wordmark and red **MOVING & RELOCATIONS** tagline. Brand colours
+  drive the whole palette (see §2).
+- **Source/assets:** original EPS + vectorised SVG + hi-res PNG in `rebrand/assets/`.
+  Web asset: `web/public/arkpol-logo.svg` (and `.png` fallback).
+- **Usage:** on dark (charcoal) backgrounds use reversed-white (`filter: brightness(0) invert(1)`);
+  on light backgrounds the full-colour grey/red logo works as-is.
 
 ---
 

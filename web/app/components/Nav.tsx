@@ -1,18 +1,22 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
+import { useT } from "../i18n";
+import LangSwitcher from "./LangSwitcher";
 
-const NAV_LINKS = [
-  { label: "Services", href: "#services" },
-  { label: "Why Arkpol", href: "#why" },
-  { label: "Network", href: "#network" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Insights", href: "#insights" },
-];
+const NAV_KEYS = [
+  { key: "services", href: "#services" },
+  { key: "why", href: "#why" },
+  { key: "network", href: "#network" },
+  { key: "faq", href: "#faq" },
+  { key: "insights", href: "#insights" },
+] as const;
 
 export default function Nav() {
+  const t = useT();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const NAV_LINKS = NAV_KEYS.map((n) => ({ label: t.nav[n.key], href: n.href }));
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -51,40 +55,13 @@ export default function Nav() {
             className="flex items-center gap-2.5 group focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-sm"
             aria-label="Arkpol — home"
           >
-            {/* Gold movement mark — a small forward-angled chevron/arrow */}
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 14 14"
-              fill="none"
-              aria-hidden="true"
-              className="shrink-0 transition-transform duration-300 group-hover:translate-x-0.5"
-            >
-              <rect
-                x="0"
-                y="0"
-                width="14"
-                height="14"
-                fill="#c9a84c"
-                className="fill-gold"
-              />
-              <path
-                d="M4.5 10.5L9.5 7 4.5 3.5"
-                stroke="#0d1b2a"
-                strokeWidth="1.6"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-
-            <span
-              className={[
-                "font-display font-bold tracking-[0.15em] text-[1.05rem] leading-none transition-colors duration-300",
-                scrolled ? "text-bone" : "text-bone",
-              ].join(" ")}
-            >
-              ARKPOL
-            </span>
+            {/* Real Arkpol logo — dark-bg variant: keeps the brand red + light
+                grey, wordmark lifted to white so the full mark reads on charcoal. */}
+            <img
+              src="/arkpol-logo-dark.svg"
+              alt="Arkpol — Moving &amp; Relocations"
+              className="h-11 w-auto transition-opacity duration-300 group-hover:opacity-80"
+            />
           </a>
 
           {/* ─── Desktop nav ──────────────────────────────────────── */}
@@ -115,19 +92,20 @@ export default function Nav() {
             ))}
           </nav>
 
-          {/* ─── Desktop CTA ──────────────────────────────────────── */}
-          <div className="hidden md:flex items-center">
+          {/* ─── Desktop CTA + language ───────────────────────────── */}
+          <div className="hidden md:flex items-center gap-5">
+            <LangSwitcher />
             <a
               href="#quote"
               className={[
                 "inline-flex items-center gap-2 px-5 py-2.5 rounded",
-                "bg-gold text-ink text-[0.8125rem] font-semibold tracking-[0.05em] uppercase",
+                "bg-gold text-bone text-[0.8125rem] font-semibold tracking-[0.05em] uppercase",
                 "transition-all duration-200",
-                "hover:bg-gold-bright hover:shadow-[0_0_20px_rgba(201,168,76,0.35)]",
+                "hover:bg-gold-bright hover:shadow-[0_0_20px_rgba(190,30,45,0.35)]",
                 "focus:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-navy",
               ].join(" ")}
             >
-              Request a Quote
+              {t.nav.quote}
             </a>
           </div>
 
@@ -201,13 +179,17 @@ export default function Nav() {
               onClick={closeMenu}
               className={[
                 "flex items-center justify-center w-full py-3 rounded",
-                "bg-gold text-ink text-sm font-semibold tracking-[0.05em] uppercase",
+                "bg-gold text-bone text-sm font-semibold tracking-[0.05em] uppercase",
                 "hover:bg-gold-bright transition-all duration-200",
                 "focus:outline-none focus-visible:ring-2 focus-visible:ring-gold",
               ].join(" ")}
             >
-              Request a Quote
+              {t.nav.quote}
             </a>
+          </div>
+
+          <div className="pt-5">
+            <LangSwitcher />
           </div>
         </div>
       </div>

@@ -37,14 +37,17 @@ export default function Reveal({
     return () => io.disconnect();
   }, []);
 
+  // Dynamic tag name — typing it precisely across the union collapses children to
+  // `never`, so cast through `any` for the JSX element.
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const Comp = Tag as any;
   return (
-    // @ts-expect-error dynamic tag
-    <Tag
+    <Comp
       ref={ref}
       className={`reveal ${className}`}
       style={delay ? { transitionDelay: `${delay}ms` } : undefined}
     >
       {children}
-    </Tag>
+    </Comp>
   );
 }

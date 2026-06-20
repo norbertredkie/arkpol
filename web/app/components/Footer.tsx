@@ -1,63 +1,36 @@
-import Link from "next/link";
+"use client";
 
-const COMPANY_LINKS = [
-  { label: "About", href: "#about" },
-  { label: "Why Arkpol", href: "#why" },
-  { label: "Our Network", href: "#network" },
-  { label: "Insights", href: "#insights" },
+import { useT } from "../i18n";
+import LangSwitcher from "./LangSwitcher";
+
+const COMPANY_HREFS = ["#about", "#why", "#network", "#insights"];
+const SERVICE_HREFS = ["#services", "#services", "#services", "#services"];
+const RESOURCE_HREFS = ["#faq", "#proof", "#", "#insights"];
+const ENTITY_META = [
+  { tag: "PL", name: "Arkpol PL", size: "2,300 m²" },
+  { tag: "DE", name: "Arkpol DE", size: "1,500 m²" },
 ];
-
-const SERVICE_LINKS = [
-  { label: "International Moving", href: "#services" },
-  { label: "Overseas Shipping", href: "#services" },
-  { label: "Corporate Relocations", href: "#services" },
-  { label: "Warehousing", href: "#services" },
-];
-
-const RESOURCE_LINKS = [
-  { label: "FAQ", href: "#faq" },
-  { label: "Case Studies", href: "#proof" },
-  { label: "GDPR", href: "#" },
-  { label: "Blog", href: "#insights" },
-];
-
-const ENTITIES = [
-  {
-    tag: "PL",
-    name: "Arkpol PL",
-    detail: "Str. Główna 9a, Nowa Wieś, Warsaw area",
-    size: "2,300 m²",
-  },
-  {
-    tag: "DE",
-    name: "Arkpol DE",
-    detail: "Frankfurt am Main",
-    size: "1,500 m²",
-  },
-  {
-    tag: "BNL",
-    name: "Arkpol BNL",
-    detail: "Amsterdam–Brussels corridor",
-    size: null,
-  },
-];
-
 const MEMBERSHIPS = ["IAM", "FEDEMAC", "IMA", "IAMX"];
 
 export default function Footer() {
+  const t = useT();
+  const COMPANY_LINKS = t.footer.company.map((label, i) => ({ label, href: COMPANY_HREFS[i] }));
+  const SERVICE_LINKS = t.footer.servicesLinks.map((label, i) => ({ label, href: SERVICE_HREFS[i] }));
+  const RESOURCE_LINKS = t.footer.resources.map((label, i) => ({ label, href: RESOURCE_HREFS[i] }));
+  const ENTITIES = ENTITY_META.map((e, i) => ({ ...e, detail: t.footer.entities[i] }));
   return (
     <footer className="bg-navy text-bone border-t border-line">
       {/* CTA Band */}
       <div className="border-b border-line">
         <div className="mx-auto max-w-[1200px] px-6 py-12 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="font-display text-3xl md:text-4xl lg:text-5xl leading-tight text-bone">
-            Move With Certainty.
+            {t.footer.cta}
           </p>
           <a
             href="#quote"
-            className="inline-block shrink-0 rounded border border-gold px-7 py-3 text-gold font-semibold text-sm tracking-wide uppercase transition-colors hover:bg-gold hover:text-navy"
+            className="inline-block shrink-0 rounded border border-gold px-7 py-3 text-gold font-semibold text-sm tracking-wide uppercase transition-colors hover:bg-gold hover:text-bone"
           >
-            Request a Quote
+            {t.nav.quote}
           </a>
         </div>
       </div>
@@ -68,7 +41,7 @@ export default function Footer() {
           {/* Company */}
           <div>
             <p className="mb-5 text-xs font-semibold tracking-[0.15em] uppercase text-bone-dim">
-              Company
+              {t.footer.colCompany}
             </p>
             <ul className="space-y-3">
               {COMPANY_LINKS.map((l) => (
@@ -87,7 +60,7 @@ export default function Footer() {
           {/* Services */}
           <div>
             <p className="mb-5 text-xs font-semibold tracking-[0.15em] uppercase text-bone-dim">
-              Services
+              {t.footer.colServices}
             </p>
             <ul className="space-y-3">
               {SERVICE_LINKS.map((l) => (
@@ -106,7 +79,7 @@ export default function Footer() {
           {/* Resources */}
           <div>
             <p className="mb-5 text-xs font-semibold tracking-[0.15em] uppercase text-bone-dim">
-              Resources
+              {t.footer.colResources}
             </p>
             <ul className="space-y-3">
               {RESOURCE_LINKS.map((l) => (
@@ -125,7 +98,7 @@ export default function Footer() {
           {/* Contact */}
           <div>
             <p className="mb-5 text-xs font-semibold tracking-[0.15em] uppercase text-bone-dim">
-              Contact
+              {t.footer.colContact}
             </p>
             <ul className="space-y-3">
               <li>
@@ -147,7 +120,7 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <span className="text-sm text-bone-dim">Phone: on request</span>
+                <span className="text-sm text-bone-dim">{t.footer.phone}</span>
               </li>
             </ul>
           </div>
@@ -172,7 +145,7 @@ export default function Footer() {
         {/* Membership Strip */}
         <div className="mt-10 border-t border-line pt-8 flex flex-wrap items-center gap-4">
           <span className="text-[10px] font-semibold tracking-[0.15em] uppercase text-bone-dim mr-2">
-            Members
+            {t.footer.members}
           </span>
           {MEMBERSHIPS.map((m, i) => (
             <span key={m} className="flex items-center gap-4">
@@ -187,23 +160,27 @@ export default function Footer() {
         </div>
 
         {/* Language Switcher */}
-        <div className="mt-6 flex items-center gap-3">
-          <span className="text-xs font-semibold text-gold">EN</span>
-          <span className="text-line select-none">·</span>
-          <span className="text-xs text-bone-dim cursor-default">PL</span>
-          <span className="text-line select-none">·</span>
-          <span className="text-xs text-bone-dim cursor-default">DE</span>
+        <div className="mt-6">
+          <LangSwitcher />
         </div>
       </div>
 
       {/* Bottom Bar */}
       <div className="border-t border-line">
-        <div className="mx-auto max-w-[1200px] px-6 py-5 flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-xs text-bone-dim">
-            © 2026 Arkpol Group. All rights reserved.
-          </p>
+        <div className="mx-auto max-w-[1200px] px-6 py-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex items-center gap-4">
+            <img
+              src="/arkpol-logo-dark.svg"
+              alt="Arkpol — Moving &amp; Relocations"
+              className="h-9 w-auto"
+              style={{ opacity: 0.9 }}
+            />
+            <p className="text-xs text-bone-dim">
+              {t.footer.copyright}
+            </p>
+          </div>
           <p className="text-xs text-bone-dim italic">
-            30 years of moving Europe.
+            {t.footer.tagline}
           </p>
         </div>
       </div>

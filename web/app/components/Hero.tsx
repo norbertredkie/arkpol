@@ -58,7 +58,7 @@ function DotMatrix() {
         Math.abs(c - cols / 2) / (cols / 2) + Math.abs(r - rows / 2) / (rows / 2);
       const o = Math.max(0.04, 0.16 - edge * 0.06);
       dots.push(
-        <circle key={`${r}-${c}`} cx={x} cy={y} r={1.6} fill="#1b4f72" opacity={o} />
+        <circle key={`${r}-${c}`} cx={x} cy={y} r={1.6} fill="#6d6e71" opacity={o} />
       );
     }
   }
@@ -82,7 +82,7 @@ export default function Hero() {
           aria-hidden
           className="pointer-events-none absolute inset-0"
           style={{
-            background: `radial-gradient(65% 55% at 82% 14%, rgba(201,168,76,${glow}), transparent 70%), radial-gradient(60% 50% at 10% 90%, rgba(201,168,76,${glow * 0.7}), transparent 70%)`,
+            background: `radial-gradient(65% 55% at 82% 14%, rgba(190,30,45,${glow}), transparent 70%), radial-gradient(60% 50% at 10% 90%, rgba(190,30,45,${glow * 0.7}), transparent 70%)`,
           }}
         />
         {/* depth vignette */}
@@ -105,13 +105,13 @@ export default function Hero() {
           <DotMatrix />
 
           {/* dormant potential network (steel, always faintly visible) */}
-          <path d={ROUTE_D} fill="none" stroke="#1b4f72" strokeWidth={1.4} opacity={0.5} />
+          <path d={ROUTE_D} fill="none" stroke="#6d6e71" strokeWidth={1.4} opacity={0.5} />
 
           {/* the gold route, drawn by scroll progress */}
           <path
             d={ROUTE_D}
             fill="none"
-            stroke="#c9a84c"
+            stroke="#be1e2d"
             strokeWidth={2.4}
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -119,15 +119,15 @@ export default function Hero() {
             style={{
               strokeDasharray: 1,
               strokeDashoffset: 1 - routeP,
-              filter: "drop-shadow(0 0 6px rgba(201,168,76,0.55))",
+              filter: "drop-shadow(0 0 6px rgba(190,30,45,0.55))",
             }}
           />
 
           {/* origin — always lit */}
           <g>
-            <circle cx={ORIGIN.x} cy={ORIGIN.y} r={5.5} fill="#c9a84c" />
-            <circle cx={ORIGIN.x} cy={ORIGIN.y} r={11} fill="none" stroke="#c9a84c" strokeWidth={1} opacity={0.5} />
-            <text x={ORIGIN.x + 14} y={ORIGIN.y + 4} fill="#c8cdd4" fontSize={15}>
+            <circle cx={ORIGIN.x} cy={ORIGIN.y} r={5.5} fill="#be1e2d" />
+            <circle cx={ORIGIN.x} cy={ORIGIN.y} r={11} fill="none" stroke="#be1e2d" strokeWidth={1} opacity={0.5} />
+            <text x={ORIGIN.x + 14} y={ORIGIN.y + 4} fill="#c4c6c9" fontSize={15}>
               {ORIGIN.label}
             </text>
           </g>
@@ -137,14 +137,14 @@ export default function Hero() {
             const lit = routeP >= pin.at;
             return (
               <g key={pin.label} style={{ opacity: lit ? 1 : 0.3, transition: "opacity 0.5s ease" }}>
-                <circle cx={pin.x} cy={pin.y} r={lit ? 5.5 : 3} fill={lit ? "#c9a84c" : "#1b4f72"} style={{ transition: "r 0.4s ease, fill 0.4s ease" }} />
+                <circle cx={pin.x} cy={pin.y} r={lit ? 5.5 : 3} fill={lit ? "#be1e2d" : "#6d6e71"} style={{ transition: "r 0.4s ease, fill 0.4s ease" }} />
                 {lit && (
-                  <circle cx={pin.x} cy={pin.y} r={11} fill="none" stroke="#c9a84c" strokeWidth={1} opacity={0.5}>
+                  <circle cx={pin.x} cy={pin.y} r={11} fill="none" stroke="#be1e2d" strokeWidth={1} opacity={0.5}>
                     <animate attributeName="r" from="6" to="20" dur="1.8s" repeatCount="indefinite" />
                     <animate attributeName="opacity" from="0.5" to="0" dur="1.8s" repeatCount="indefinite" />
                   </circle>
                 )}
-                <text x={pin.x + 13} y={pin.y + 4} fill={lit ? "#c8cdd4" : "#5a6b7d"} fontSize={15} style={{ transition: "fill 0.4s ease" }}>
+                <text x={pin.x + 13} y={pin.y + 4} fill={lit ? "#c4c6c9" : "#5a6b7d"} fontSize={15} style={{ transition: "fill 0.4s ease" }}>
                   {pin.label}
                 </text>
               </g>
@@ -170,7 +170,7 @@ export default function Hero() {
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <a
                 href="#quote"
-                className="rounded-[2px] bg-gold px-7 py-3.5 text-sm font-semibold uppercase tracking-wider text-navy transition-colors hover:bg-gold-bright"
+                className="rounded-[2px] bg-gold px-7 py-3.5 text-sm font-semibold uppercase tracking-wider text-bone transition-colors hover:bg-gold-bright"
               >
                 Request a Quote →
               </a>

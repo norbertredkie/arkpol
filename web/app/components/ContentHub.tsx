@@ -1,33 +1,11 @@
-import Reveal from "./Reveal";
+"use client";
 
-const pillars = [
-  {
-    title: "Corporate Relocation",
-    articles: [
-      "Relocating employees from Poland to Germany (2026 guide)",
-      "What HR needs to know about EU employee relocation",
-      "How to choose an IAM-certified moving company",
-    ],
-  },
-  {
-    title: "Country Guides",
-    articles: [
-      "Moving to the Netherlands from Poland: what to expect",
-      "International move to the UK after Brexit: customs & rules",
-      "Moving to Germany: a step-by-step expat guide",
-    ],
-  },
-  {
-    title: "Specialty Moves",
-    articles: [
-      "Relocating sensitive and high-value cargo",
-      "Moving artwork and valuables internationally",
-      "Relocating a home office across borders",
-    ],
-  },
-];
+import Reveal from "./Reveal";
+import { useT } from "../i18n";
 
 export default function ContentHub() {
+  const t = useT();
+  const pillars = t.insights.pillars;
   return (
     <section id="insights" className="amb bg-navy text-bone py-24 md:py-32">
       <div className="mx-auto max-w-[1200px] px-6">
@@ -35,13 +13,13 @@ export default function ContentHub() {
         {/* Section header */}
         <Reveal className="mb-16 md:mb-20">
           <p className="text-gold uppercase tracking-[0.2em] text-xs font-semibold mb-4">
-            INSIGHTS
+            {t.insights.eyebrow}
           </p>
           <h2 className="font-display text-[2.5rem] md:text-[3rem] leading-tight text-bone mb-5 max-w-2xl">
-            Guides that get cited.
+            {t.insights.heading}
           </h2>
           <p className="text-bone-dim text-lg max-w-xl leading-relaxed">
-            Expert relocation guides — built to be the answer when buyers (and AI) ask.
+            {t.insights.sub}
           </p>
         </Reveal>
 
@@ -94,13 +72,13 @@ export default function ContentHub() {
         {/* Footer row */}
         <Reveal delay={400} className="mt-16 md:mt-20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
           <p className="text-bone-dim text-sm tracking-wide">
-            <span className="text-gold font-semibold">2 new guides</span> published every month.
+            <span className="text-gold font-semibold">{t.insights.newGuidesBold}</span>{t.insights.newGuidesRest}
           </p>
           <a
             href="#"
             className="group inline-flex items-center gap-2 border border-line text-bone text-sm px-6 py-3 rounded-full hover:border-gold hover:text-gold transition-colors duration-200"
           >
-            Read the blog
+            {t.insights.readBlog}
             <span
               className="transition-transform duration-200 group-hover:translate-x-1"
               aria-hidden="true"

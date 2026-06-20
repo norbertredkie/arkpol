@@ -6,9 +6,9 @@ import { OrbitControls, Stars, Line } from "@react-three/drei";
 import * as THREE from "three";
 
 const R = 1.6;
-const NAVY = "#0d1b2a";
-const STEEL = "#1b4f72";
-const GOLD = "#c9a84c";
+const NAVY = "#202124";
+const STEEL = "#6d6e71";
+const GOLD = "#be1e2d";
 
 /* lat/lon (deg) → point on a sphere of radius r */
 function ll(lat: number, lon: number, r = R) {
@@ -124,7 +124,7 @@ function Routes({ animate }: { animate: boolean }) {
           <Pin pos={r.end} size={0.026} />
           <mesh ref={(el) => { pulses.current[i] = el; }}>
             <sphereGeometry args={[0.022, 12, 12]} />
-            <meshBasicMaterial color="#f4e3a8" toneMapped={false} />
+            <meshBasicMaterial color="#e8727c" toneMapped={false} />
           </mesh>
         </group>
       ))}
