@@ -262,8 +262,8 @@ Fazy 1–6 są od siebie NIEZALEŻNE — każdy klucz odblokowuje swoją fazę o
 | W.3 | Kreator wyceny zamiast obecnego formularza (5 języków, mobile-first, kontakt PO pokazaniu ceny; baza: `rebrand/QUOTE_CALCULATOR.md`) | Agent | W.2 | nowa sekcja na arkpol.com | click-through na 390 px: wycena w <3 min, zero błędów | 🔒 W.2 |
 | W.4 | Typ wydarzenia w Calendly „Sugerowany termin przeprowadzki" + osadzenie w kreatorze + stały dopisek: „Dni są sugerowane. Termin potwierdzamy dopiero po podpisaniu umowy." | Agent (+ konto z A1.1) | A1.1 | kalendarz w kreatorze | dopisek widoczny przy kalendarzu w każdym języku | 🔒 A1.1 |
 | W.5 | Lead do Brain: wycena + sugerowane dni + dane kontaktowe w jednym rekordzie (webhook Calendly z A1.2 + dane kreatora) | Agent | W.3, W.4, A1.2 | lead z kompletem danych | testowy lead ma widełki i dni | 🔒 W.3, W.4 |
-| W.6 | Wzór umowy przeprowadzki (zakres, cena, termin, odpowiedzialność, ubezpieczenie, RODO, odstąpienie dla konsumenta) PL/EN/DE | Agent pisze, **prawnik + Norbert** 🔑 | obecne warunki Arkpolu | zatwierdzony wzór | — | ⬜ |
-| W.7 | Konto Autenti z dostępem do API + klucz w Keychain; sprawdzenie ceny planu i za podpis | **Norbert** 🔑 | — | konto + klucz | testowy dokument do podpisu wysłany z API | ⬜ |
+| W.6 | Wzór umowy przeprowadzki: **1 strona + „Standard usługi” na 1 stronę**, z akceptacją Standardu checkboxem i podpisem w Autenti. Standard ma tę samą wersję co SLA podwykonawców (Karta Sieci „Klient bezpośredni”). PL/EN/DE. Lista: `docs/UMOWA_KLIENT_STANDARD_USLUGI_LISTA_OM.md` | **Office Manager** zbiera wejście (A1–A11), Agent pisze, **prawnik + Norbert** 🔑 zatwierdzają | lista A1–A11 + SLA podwykonawców v2 | zatwierdzony wzór + Standard usługi vX | każda obietnica Standardu ma § w SLA podwykonawców; zero liczb bez źródła | ⬜ |
+| W.7 | Konto Autenti z dostępem do API + klucz w Keychain; sprawdzenie ceny planu i za podpis | **Office Manager** sprawdza cennik i zakłada konto firmowe (A6), **Norbert** 🔑 akceptuje koszt, Agent podpina API | A6 | konto + klucz | testowy dokument do podpisu wysłany z API | ⬜ |
 | W.8 | Automat: „oferta przyjęta" w Brain → umowa z wzoru W.6 z danymi zlecenia → wysyłka do podpisu w Autenti → webhook „podpisane" → termin = potwierdzony + mail do klienta + wpis dla DISPO | Agent | W.5, W.6, W.7 | działający łańcuch | testowa umowa podpisana → status „potwierdzony" bez ręcznej pracy | 🔒 W.5–W.7 |
 | W.9 | Pełny gate: testy + click-through na żywo + 3 soczewki (Chief Tester, CMO, CDesigner) | org | W.8 | raport gate | wszystkie 3 soczewki zielone | 🔒 W.8 |
 
@@ -433,8 +433,8 @@ Razem pełna wersja ≈ **2–3 miesiące**. Kolejność celowa: wersja w przegl
 | P27 | Lifty (lifty-app.pl) — znasz ich? Kupujemy ich usługę testowo jako klient, żeby sprawdzić cenę i jakość? | rynek, D1.3 | tak, jedno zamówienie testowe po Twojej zgodzie (zakup = Twoja decyzja) |
 | P28 | Kalendarz: klient wybiera jeden dzień czy kilka (np. 2–3 pasujące dni)? | W.4 | jeden preferowany dzień + pole „inne pasujące dni" |
 | P29 | Czy pokazujemy klientowi kwoty od razu, czy tylko „od X zł"? Dla jakich tras wycena tylko po wizji (np. poza Europę)? | W.2 | widełki „od–do" w Europie; poza Europą „po wizji lokalnej" |
-| P30 | Czy Arkpol ma już konto Autenti albo inny e-podpis? Kto podpisuje umowy po stronie firmy? | W.7, W.8 | brak konta; podpisuje Prezes (do potwierdzenia) |
-| P31 | Czy istnieje obecny wzór umowy / ogólne warunki zlecenia, od którego zaczynamy? | W.6 | piszemy od zera na bazie standardów FIDI/IAM |
+| P30 | Czy Arkpol ma już konto Autenti albo inny e-podpis? Kto podpisuje umowy po stronie firmy? (zbiera Office Manager: A4, A6) | W.7, W.8 | brak konta; podpisuje Prezes (do potwierdzenia) |
+| P31 | Czy istnieje obecny wzór umowy / ogólne warunki zlecenia, od którego zaczynamy? (zbiera Office Manager: A1) | W.6 | piszemy od zera na bazie standardów FIDI/IAM |
 
 ---
 
