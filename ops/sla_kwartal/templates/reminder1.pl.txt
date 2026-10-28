@@ -1,0 +1,8 @@
+Subject: Przypomnienie: SLA Arkpol na {quarter} czeka na podpis
+Dzień dobry,
+
+przypominamy, że SLA podwykonawcy Arkpol na {quarter}, wysłane {sent}, nie zostało jeszcze podpisane:
+{sign_link}
+
+Pozdrawiamy
+Arkpol

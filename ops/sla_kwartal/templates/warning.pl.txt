@@ -1,0 +1,12 @@
+Subject: Brak podpisu SLA na {quarter}: blokada nowych zleceń od {block_date}
+Dzień dobry,
+
+SLA podwykonawcy Arkpol na {quarter}, wysłane {sent}, mimo dwóch przypomnień nie zostało podpisane.
+
+Zgodnie z § 15 SLA brak podpisu powoduje zablokowanie nowych zleceń od {block_date}, aż do podpisania umowy. Zlecenia już przyjęte realizujemy normalnie.
+
+Link do podpisu:
+{sign_link}
+
+Pozdrawiamy
+Arkpol

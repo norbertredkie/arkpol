@@ -1,0 +1,12 @@
+Subject: Arkpol: SLA podwykonawcy na {quarter} do podpisu
+Dzień dobry,
+
+w załączniku przesyłamy SLA podwykonawcy Arkpol na kwartał {quarter} (od {quarter_start}). Umowę podpisuje się elektronicznie w Autenti:
+{sign_link}
+
+SLA odnawiamy co kwartał. Zawiera aktualne wymagania naszych zleceniodawców (sieci i klientów), które obowiązują przy zleceniach przekazywanych Państwu przez Arkpol.
+
+Prosimy o podpis w ciągu 3 dni. Bez podpisanego SLA na {quarter} nie będziemy mogli przekazywać Państwu nowych zleceń.
+
+Pozdrawiamy
+Arkpol

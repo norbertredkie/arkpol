@@ -1,0 +1,4 @@
+[
+  {"id": "sub-001", "name": "Przykładowy Przewoźnik Sp. z o.o.", "nip": "0000000000", "email": "biuro@example.com", "lang": "pl", "active": true},
+  {"id": "sub-002", "name": "Example Removals Ltd", "nip": "GB000000000", "email": "ops@example.org", "lang": "en", "active": true}
+]

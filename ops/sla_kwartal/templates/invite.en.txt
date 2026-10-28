@@ -1,0 +1,12 @@
+Subject: Arkpol: subcontractor SLA for {quarter} to sign
+Hello,
+
+please find attached the Arkpol subcontractor SLA for {quarter} (from {quarter_start}). It is signed electronically in Autenti:
+{sign_link}
+
+The SLA is renewed every quarter and carries the current requirements of our principals (networks and clients) that apply to orders Arkpol passes to you.
+
+Please sign within 3 days. Without a signed SLA for {quarter} we cannot pass you new orders.
+
+Kind regards
+Arkpol

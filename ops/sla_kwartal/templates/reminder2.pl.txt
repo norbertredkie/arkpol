@@ -1,0 +1,8 @@
+Subject: Drugie przypomnienie: SLA Arkpol na {quarter}
+Dzień dobry,
+
+to drugie przypomnienie o SLA podwykonawcy Arkpol na {quarter} (wysłane {sent}). Prosimy o podpis:
+{sign_link}
+
+Pozdrawiamy
+Arkpol

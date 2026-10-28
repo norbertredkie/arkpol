@@ -1,0 +1,12 @@
+Subject: SLA for {quarter} not signed: new orders blocked from {block_date}
+Hello,
+
+the Arkpol subcontractor SLA for {quarter}, sent on {sent}, has not been signed despite two reminders.
+
+Under § 15 of the SLA, without a signature new orders are blocked from {block_date} until the SLA is signed. Orders already accepted continue as normal.
+
+Signing link:
+{sign_link}
+
+Kind regards
+Arkpol

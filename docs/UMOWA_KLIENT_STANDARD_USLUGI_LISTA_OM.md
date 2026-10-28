@@ -1,6 +1,6 @@
 # Umowa z klientem + Standard usługi: lista zadań dla Office Manager
 
-**2026-10-28 · zadanie W.6 / W.7 (FAZA W w `ARKPOL_SCOPE_MASTER.md`) · powiązane z: SLA dla podwykonawców v2**
+**2026-10-28 · prawnik nic nie pisze: bierzemy istniejące SLA sieci i je dostosowujemy (decyzja Norberta) · zadanie W.6 / W.7 (FAZA W w `ARKPOL_SCOPE_MASTER.md`) · powiązane z: SLA dla podwykonawców v2**
 (`_pbs/products/pbs-federation/arenas/arkpol-testnet/channel/sla-podwykonawca/SLA_PODWYKONAWCA_v2.md`, commit 27c1a117)
 
 ---
@@ -29,7 +29,7 @@ Odpowiedź „nie ma” też jest odpowiedzią. Wpisujemy ją i idziemy dalej. G
 
 | # | Co zebrać | Skąd / od kogo | Po co | Gotowe |
 |---|---|---|---|---|
-| A1 | **Obecne wzory**: umowa z klientem prywatnym, ogólne warunki lub regulamin, formularz odstąpienia od umowy. Jeśli ich nie ma, wpisać „brak”. | Dysk, poczta, Prezes, MM | punkt startu dla prawnika (pytanie P31) | ☐ |
+| A1 | **Obecne wzory**: umowa z klientem prywatnym, ogólne warunki lub regulamin, formularz odstąpienia od umowy. Jeśli ich nie ma, wpisać „brak”. | Dysk, poczta, Prezes, MM | punkt startu wzoru (pytanie P31) | ☐ |
 | A2 | **3 ostatnie oferty** wysłane klientom prywatnym, po jednej PL, EN i DE (jeśli są) | skrzynki MM | umowa ma odsyłać do oferty, więc musi pasować do jej układu | ☐ |
 | A3 | **Która spółka** zawiera umowy z klientami prywatnymi (AR czy BIS), pełne dane rejestrowe | Prezes / księgowość | nagłówek umowy | ☐ |
 | A4 | **Kto podpisuje** po stronie Arkpol i czy potrzebne jest pełnomocnictwo dla osoby podpisującej w Autenti | Prezes | podpis w Autenti (pytanie P30) | ☐ |
@@ -38,7 +38,7 @@ Odpowiedź „nie ma” też jest odpowiedzią. Wpisujemy ją i idziemy dalej. G
 | A7 | **Protokoły w użyciu** (skan z 2–3 ostatnich zleceń): protokół rozpoczęcia, zakończenia, spis rzeczy, protokół szkód. Jeśli ich nie ma, wpisać „brak”. | MM, magazyn, ekipy | te same druki podpisują klient i podwykonawca, więc muszą być jedne | ☐ |
 | A8 | **Reklamacje dziś**: jak klient zgłasza szkodę, kto odpowiada, gdzie to jest zapisane. Lista reklamacji z 2026 (tylko data i rodzaj). | MM, biuro | kanał zgłoszeń i termin odpowiedzi w Standardzie | ☐ |
 | A9 | **Lista podwykonawców**, którzy dziś obsługują klientów prywatnych: nazwa, NIP, kontakt, czy mają pisemną umowę z Arkpol, kopia polisy | MM, księgowość | oni podpisują SLA podwykonawcy. Bez tego obietnica dla klienta nie ma pokrycia. | ☐ |
-| A10 | **Prawnik**: z jaką kancelarią pracuje Arkpol, kontakt, czy prowadzi sprawy konsumenckie | Prezes / Norbert | przegląd wzoru (W.6) | ☐ |
+| A10 | **Podwykonawcy: SLA kwartalne.** Office Manager jest w DW każdego maila automatu (zaproszenie, 2 przypomnienia, informacja o blokadzie). Sprawdza, czy podpisane SLA są w folderze kwartału na Dysku. Kto nie podpisał, ten od pierwszego dnia kwartału nie dostaje nowych zleceń: przekazać to MM. | automat `ops/sla_kwartal`, Dysk | dzięki temu obietnice z umowy klienta są pokryte przez podwykonawców | co kwartał |
 | A11 | **Tłumacz lub native** do sprawdzenia wersji EN i DE | kontakty firmy | Standard usługi i umowa w 3 językach | ☐ |
 
 **Czego Office Manager NIE decyduje.** Te pola zostają w [nawiasach] do decyzji Norberta i Prezesa: wysokość zaliczki, kwoty kar dla podwykonawców, sumy polis, termin wysłania dokumentów klientowi, zakres, za który Arkpol bierze odpowiedzialność.
@@ -57,8 +57,8 @@ Krótko, zwykłym językiem, bez paragrafów na pół strony. Wszystkie szczegó
    > ☐ **Akceptuję Standard usługi Arkpol (wersja [2] z [28.10.2026]). Standard jest częścią tej umowy.**
    >
    > Checkbox w kreatorze jest **niezaznaczony** domyślnie. Bez zaznaczenia nie można przejść dalej. Autenti podpisuje umowę, ofertę i Standard jako **jeden PDF**.
-6. **Odpowiedzialność i ubezpieczenie**: jedno zdanie, treść po A5 i decyzji prawnika.
-7. **Odstąpienie od umowy** (wymóg ustawy dla konsumenta, umowa zawarta na odległość): wzór formularza w załączniku. Prawnik ustala, jak to pogodzić z terminem przeprowadzki.
+6. **Odpowiedzialność i ubezpieczenie**: jedno zdanie, treść po A5 (polisy) i decyzji Norberta.
+7. **Odstąpienie od umowy** (wymóg ustawy dla konsumenta, umowa zawarta na odległość): wzór formularza w załączniku. Klient w kreatorze prosi o rozpoczęcie usługi przed upływem 14 dni i przyjmuje do wiadomości, że po pełnym wykonaniu usługi traci prawo odstąpienia (art. 38 ustawy o prawach konsumenta).
 8. **Dane osobowe**: jedno zdanie i link do polityki prywatności.
 
 ---
@@ -90,7 +90,7 @@ Każda obietnica ma źródło w SLA podwykonawcy. Kolumna „§ SLA” to dowód
 | K2 | Jest obecny lub wyznacza osobę na protokół „przed” i „po” oraz podpisuje spis. | Bez podpisu nie ma dowodu przy szkodzie (§ 5 ust. 5–6). |
 | K3 | Nie oddaje do pakowania rzeczy zabronionych (lista w załączniku: łatwopalne, żywność, płyny, broń itp.). Pieniądze, biżuterię i dokumenty przewozi sam. | § 5 ust. 7 |
 | K4 | Dodatkowe prace zamawia przez opiekuna zlecenia, nie bezpośrednio u ekipy. | § 4 ust. 3, § 7 ust. 3 |
-| K5 | Szkodę widoczną wpisuje do protokołu zakończenia, a szkodę ukrytą zgłasza w terminie **[●]**. Prawnik potwierdzi termin ustawowy; w Prawie przewozowym dla szkód niewidocznych to 7 dni. | § 10 |
+| K5 | Szkodę widoczną wpisuje do protokołu zakończenia, a szkodę ukrytą zgłasza w terminie **[●]**. Proponowany termin to 7 dni (art. 76 Prawa przewozowego). | § 10 |
 
 ---
 

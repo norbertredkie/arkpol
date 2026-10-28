@@ -1,0 +1,17 @@
+{
+  "_comment": "Quarterly subcontractor SLA signing. Switches stay false until Norbert's go (W.7 Autenti + Drive access).",
+  "send_enabled": false,
+  "archive_enabled": false,
+  "send_days_before_quarter": 14,
+  "reminder_every_days": 3,
+  "reminders": 2,
+  "warning_after_last_reminder_days": 3,
+  "from_address": "[sla@arkpol.com]",
+  "cc_office_manager": "[office-manager@arkpol.com]",
+  "drive_folder": "0_FIRMY grupy ARKPOL/Umowy/SLA PODWYKONAWCY/{quarter}",
+  "sla_document": "~/_pbs/products/pbs-federation/arenas/arkpol-testnet/channel/sla-podwykonawca/SLA_PODWYKONAWCA_v2.docx",
+  "smtp_host": "smtp.gmail.com",
+  "smtp_port": 587,
+  "smtp_keychain_service": "arkpol/SLA_SMTP_APP_PASSWORD",
+  "autenti_keychain_service": "arkpol/AUTENTI_API_KEY"
+}

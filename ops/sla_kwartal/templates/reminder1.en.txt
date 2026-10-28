@@ -1,0 +1,8 @@
+Subject: Reminder: Arkpol SLA for {quarter} awaits your signature
+Hello,
+
+a reminder that the Arkpol subcontractor SLA for {quarter}, sent on {sent}, has not been signed yet:
+{sign_link}
+
+Kind regards
+Arkpol

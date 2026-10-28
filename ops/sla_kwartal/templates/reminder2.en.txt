@@ -1,0 +1,8 @@
+Subject: Second reminder: Arkpol SLA for {quarter}
+Hello,
+
+this is the second reminder about the Arkpol subcontractor SLA for {quarter} (sent on {sent}). Please sign:
+{sign_link}
+
+Kind regards
+Arkpol
