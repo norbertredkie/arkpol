@@ -5,7 +5,9 @@
 
 ---
 
-Poniżej opisuję, co według mnie trzeba zrobić, żeby za błędy podwykonawców nie płaciła firma, i co w tym ma zrobić Jolka. Na końcu są decyzje, których potrzebuję od Ciebie.
+Tato,
+
+poniżej opisuję, co według mnie trzeba zrobić, żeby za błędy podwykonawców nie płaciła firma, i co w tym ma zrobić Jolka. Na końcu są decyzje, których potrzebuję od Ciebie.
 
 ## 1. Dlaczego SLA dla podwykonawców i dlaczego właśnie tak
 
