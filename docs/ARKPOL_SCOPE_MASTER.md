@@ -398,7 +398,6 @@ Razem pełna wersja ≈ **2–3 miesiące**. Kolejność celowa: wersja w przegl
 | P19 | RedKey (R.1): uzbrajamy import leadów? (rekomendacja org: TAK — alarm o EXPORT_KEY był fałszywy) | sidequest R | zaparkowane — sync wyłączony |
 | P20 | Move4U twierdzi, że Arkpol MA już 2× CrewPro + 1× SurveyPro — wiedziałeś? Kto je kupił / kto ich używa (biuro? Voerman? Crown?) | A6.3, koszty F6 | zapytaliśmy Move4U o daty aktywacji i przypisane konta; traktujemy jako aktywa do wykorzystania |
 | P21 | Yembo (Tom Killian, EST) przyśle sloty na call w przyszłym tygodniu — późne popołudnie CET pasuje? Bierzesz udział sam czy z kimś (Michał?) | A6.2 | proponujemy późne popołudnie CET; uczestnik: Norbert (+ opcjonalnie Michał) |
-
 | P22 | Ile przeprowadzek krajowych dla klientów prywatnych Arkpol robi dziś miesięcznie i ile zapytań odrzuca w sezonie (bo brak terminu)? | D3.3, D4, decyzja D6.1 | nie znamy — pierwsze 4–6 tygodni D1 policzy to samo |
 | P23 | Ile ekip i aut dziennie możemy oddać na Domestic, nie ruszając zleceń międzynarodowych/korporacyjnych? | D3.3 | 1 ekipa + 1 auto dziennie w Warszawie |
 | P24 | Jakie są dziś stawki Arkpolu za przeprowadzkę lokalną (zł/h lub ryczałt) i jaka marża jest minimum? | D1.3, D2.4 | cennik RedKey 1:1 do czasu Twojej decyzji |
