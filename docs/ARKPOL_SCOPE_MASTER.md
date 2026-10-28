@@ -34,6 +34,7 @@ Szczegóły techniczne żyją w: `ARKPOL_ARCHITECTURE.md` (jak to jest zbudowane
 | 7 | Google Drive + dokumenty | Google Workspace (faza 2) | 🔒 |
 | 8 | Ludzie i rytm zespołu | fazy 1–7 częściowo | 🔒 |
 | K | Kontrola komunikacji i śladu ustaleń | dane VoIP od Norberta 🔑 (pełna moc po fazach 2+4) | ⬜ |
+| W | Formularz arkpol.com: wycena sam + sugerowane dni (Calendly) + umowa w Autenti | konto Calendly (faza 1) + konto Autenti + akceptacja widełek i wzoru umowy 🔑 | ⬜ scope 2026-10-28 |
 | D | Arkpol Domestic: aplikacja zamówień (bus + tragarze, pakiety, skan, kalendarz z DISPO, partnerzy) | słowo Norberta „start" (D1.1) 🔑 | ⬜ scope 2026-10-28 |
 | R | Sidequest: RedKey (rynek lokalny) | — | ⛔ zastąpiony fazą D |
 
@@ -242,6 +243,32 @@ Fazy 1–6 są od siebie NIEZALEŻNE — każdy klucz odblokowuje swoją fazę o
 
 ---
 
+## FAZA W — Formularz na arkpol.com: wycena sam + sugerowane dni + umowa w Autenti ✍️
+
+**Polecenie Norberta 2026-10-28:** sekcja „Opowiedz nam o swojej przeprowadzce" do przerobienia. Klient ma od razu sam zrobić wycenę w aplikacji, w tym samym kroku wybrać w Calendly możliwe dni, z jasną informacją, że dni są **sugerowane**, a termin potwierdza dopiero **podpisana umowa**. Umowa podpisywana w **Autenti**.
+
+> **Problem:** dziś formularz to 8 pustych pól i „odpowiemy mailem". Klient nie wie, ile to kosztuje ani czy termin w ogóle wchodzi w grę, więc pyta też konkurencję i czeka. Termin „ustalony" przez telefon nie jest nigdzie zapisany i nie ma za sobą umowy.
+> **Rozwiązanie:** formularz zamienia się w krótki kreator: (1) skąd/dokąd, wielkość mieszkania, usługi → (2) **widełki ceny na ekranie od razu** („orientacyjnie, ostateczna cena po wizji lokalnej") → (3) wybór sugerowanych dni w osadzonym Calendly z dopiskiem „dni sugerowane; termin potwierdzamy po podpisaniu umowy" → (4) kontakt. Lead z wyceną i dniami trafia do Brain. Po akceptacji oferty Brain sam składa umowę i wysyła ją do podpisu w Autenti; dopiero podpis zamyka termin.
+> **Zyski:** klient dostaje cenę w 2 minuty zamiast w dzień; MM dostaje leada z gotowymi danymi i datami zamiast pustego maila; żaden termin nie jest „trzymany" bez podpisanej umowy; podpisana umowa = dowód przy sporze i reklamacji.
+> **Koszty:** 💰 Calendly: to samo konto co w fazie 1 (bez dopłaty, jeśli wystarczy 1 stanowisko). Autenti: abonament + opłata za podpisy, dostęp do API tylko w wyższych planach — **kwota NIEPOTWIERDZONA**, do sprawdzenia przy zakładaniu konta (W.7). 👤 jednorazowo: Norbert ~1 h (konto Autenti, akceptacja widełek cen i wzoru umowy); stale: MM tylko zatwierdza ofertę jednym kliknięciem. ⚖️ wzór umowy powinien przejrzeć prawnik (koszt jednorazowy, do ustalenia). 🤖 budowa kreatora, integracje i nadzór = struktura PBS, koszt wg wyceny obsługi PBS.
+> **Po czym poznamy, że działa:** testowy klient na telefonie przechodzi kreator w <3 min, widzi widełki, wybiera dni; lead z wyceną i dniami pojawia się w Brain; po kliknięciu „oferta przyjęta" klient dostaje umowę z Autenti, a po podpisie termin sam zmienia status na „potwierdzony".
+
+**Uwaga techniczna (z researchu do D3.1):** Calendly nie widzi DISPO i nie zna pojemności ekip, dlatego dni z Calendly są wyłącznie **sugestią klienta**, a nie rezerwacją. Właśnie dlatego dopisek „sugerowane, potwierdzenie po umowie" jest obowiązkowy, a nie ozdobą.
+
+| ID | Zadanie atomowe | Wykonawca | Wejście | Wynik | Test akceptacji | Stan |
+|---|---|---|---|---|---|---|
+| W.1 | Model widełek ceny z prawdziwej historii: rejestr zleceń Certusoft ma trasę, objętość i cenę końcową na każdym zleceniu od 2021 (~5 140 wykonanych) → widełki per typ trasy × wielkość | Agent (org) | rejestr Certusoft | tabela widełek + opis metody | widełki pokrywają ≥80 % historycznych cen końcowych dla danej trasy/wielkości | ⬜ |
+| W.2 | Akceptacja widełek (czy pokazujemy klientowi kwoty, od jakiej trasy „tylko po wizji") | **Norbert / Prezes** 🔑 | W.1 | zatwierdzona tabela | — | 🔒 W.1 |
+| W.3 | Kreator wyceny zamiast obecnego formularza (5 języków, mobile-first, kontakt PO pokazaniu ceny; baza: `rebrand/QUOTE_CALCULATOR.md`) | Agent | W.2 | nowa sekcja na arkpol.com | click-through na 390 px: wycena w <3 min, zero błędów | 🔒 W.2 |
+| W.4 | Typ wydarzenia w Calendly „Sugerowany termin przeprowadzki" + osadzenie w kreatorze + stały dopisek: „Dni są sugerowane. Termin potwierdzamy dopiero po podpisaniu umowy." | Agent (+ konto z A1.1) | A1.1 | kalendarz w kreatorze | dopisek widoczny przy kalendarzu w każdym języku | 🔒 A1.1 |
+| W.5 | Lead do Brain: wycena + sugerowane dni + dane kontaktowe w jednym rekordzie (webhook Calendly z A1.2 + dane kreatora) | Agent | W.3, W.4, A1.2 | lead z kompletem danych | testowy lead ma widełki i dni | 🔒 W.3, W.4 |
+| W.6 | Wzór umowy przeprowadzki (zakres, cena, termin, odpowiedzialność, ubezpieczenie, RODO, odstąpienie dla konsumenta) PL/EN/DE | Agent pisze, **prawnik + Norbert** 🔑 | obecne warunki Arkpolu | zatwierdzony wzór | — | ⬜ |
+| W.7 | Konto Autenti z dostępem do API + klucz w Keychain; sprawdzenie ceny planu i za podpis | **Norbert** 🔑 | — | konto + klucz | testowy dokument do podpisu wysłany z API | ⬜ |
+| W.8 | Automat: „oferta przyjęta" w Brain → umowa z wzoru W.6 z danymi zlecenia → wysyłka do podpisu w Autenti → webhook „podpisane" → termin = potwierdzony + mail do klienta + wpis dla DISPO | Agent | W.5, W.6, W.7 | działający łańcuch | testowa umowa podpisana → status „potwierdzony" bez ręcznej pracy | 🔒 W.5–W.7 |
+| W.9 | Pełny gate: testy + click-through na żywo + 3 soczewki (Chief Tester, CMO, CDesigner) | org | W.8 | raport gate | wszystkie 3 soczewki zielone | 🔒 W.8 |
+
+---
+
 ## FAZA D — Arkpol Domestic: aplikacja zamówień przeprowadzek (dawny RedKey) 🚚
 
 **Rynek:** patrz `ARKPOL_DOMESTIC_RYNEK_PL_2026-10-28.md` — jedyny bezpośredni konkurent typu „Uber do przeprowadzek" to Lifty (Warszawa, bez pakowania/rozpakowania); reszta rynku sprzedaje godziny (bus + 2 tragarzy 132–345 zł/h netto, min. 2 h), nikt w Polsce nie sprzedaje pełnego pakietu ze stałą ceną.
@@ -404,6 +431,10 @@ Razem pełna wersja ≈ **2–3 miesiące**. Kolejność celowa: wersja w przegl
 | P25 | Których partnerów (firmy przeprowadzkowe, organizerki, sprzątanie, wywóz) znasz osobiście i możemy ich zaprosić do sieci? | D4.1 | zaczynamy od firm z IAM/FEDEMAC w Polsce + 1 organizerka w Warszawie |
 | P26 | Miasta na start: tylko Warszawa i okolice (obszar RedKey: 18 dzielnic + 20 miejscowości do 30 km)? | D1, D3 | tak, tylko Warszawa + 30 km |
 | P27 | Lifty (lifty-app.pl) — znasz ich? Kupujemy ich usługę testowo jako klient, żeby sprawdzić cenę i jakość? | rynek, D1.3 | tak, jedno zamówienie testowe po Twojej zgodzie (zakup = Twoja decyzja) |
+| P28 | Kalendarz: klient wybiera jeden dzień czy kilka (np. 2–3 pasujące dni)? | W.4 | jeden preferowany dzień + pole „inne pasujące dni" |
+| P29 | Czy pokazujemy klientowi kwoty od razu, czy tylko „od X zł"? Dla jakich tras wycena tylko po wizji (np. poza Europę)? | W.2 | widełki „od–do" w Europie; poza Europą „po wizji lokalnej" |
+| P30 | Czy Arkpol ma już konto Autenti albo inny e-podpis? Kto podpisuje umowy po stronie firmy? | W.7, W.8 | brak konta; podpisuje Prezes (do potwierdzenia) |
+| P31 | Czy istnieje obecny wzór umowy / ogólne warunki zlecenia, od którego zaczynamy? | W.6 | piszemy od zera na bazie standardów FIDI/IAM |
 
 ---
 
@@ -422,5 +453,6 @@ Razem pełna wersja ≈ **2–3 miesiące**. Kolejność celowa: wersja w przegl
 | 9 | Decyzja RedKey (R.1) | SIDEQUEST R | 2 min |
 | 10 | Nazwa systemu VoIP + dostęp do panelu/API (K.1) | FAZA K | 5 min |
 | 11 | Słowo „start" dla Arkpol Domestic (D1.1) + odpowiedzi P22–P27 | FAZA D | 15 min |
+| 12 | Konto Autenti (z API) + akceptacja widełek cen i wzoru umowy + odpowiedzi P28–P31 | FAZA W | ~1 h |
 
 **Zasady utrzymania dokumentu:** każde nowe działanie w Arkpol OS dostaje ID w tym pliku ZANIM zostanie zbudowane; statusy aktualizowane po każdej sesji; zmiany zakresu = nowa wersja do akceptacji fazy, nie ciche dopiski; kwoty „do potwierdzenia" uzupełniane w dniu poznania ceny.
